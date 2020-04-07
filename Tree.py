@@ -22,12 +22,6 @@ class Node(Generic[T]):
     def __str__(self):
         return "Node: " + self.data.__str__()
 
-    def __lt__(self, other):
-        return self.data < other.data
-
-    def __gt__(self, other):
-        return self.data > other.data
-
 
 # Recursive auxiliary method for adding data to a Tree.
 def insert_helper(node, insertion):
@@ -54,9 +48,9 @@ def remove_helper(aux_node, removal):
     if aux_node is None:
         return
 
-    if removal < aux_node:
+    if removal < aux_node.data:
         aux_node.left = remove_helper(aux_node.left, removal)
-    elif removal > aux_node:
+    elif removal > aux_node.data:
         aux_node.right = remove_helper(aux_node.right, removal)
     else:
         if aux_node.right is None:
@@ -123,8 +117,8 @@ class Tree:
         else:
             insert_helper(self.root, new_node)
 
-    def tree_remove(self, data: T):
-        remove_helper(self.root, data)
+    def tree_remove(self, node):
+        remove_helper(self.root, node)
 
     def __str__(self):
         string_aux(self.root)

@@ -8,7 +8,11 @@ def __main__():
     my_tree = Tree()
 
     for i in range(1, 20):
-        my_tree.tree_insert(random.randrange(20))
+        entry = random.randrange(20)
+        my_tree.tree_insert(entry)
+
+        if i is 10:
+            remove = entry
 
     my_list.add__to("a")
     my_list.add__to("six")
@@ -17,7 +21,9 @@ def __main__():
     print(my_list.__str__())
     print(my_tree.__str__())
 
-    my_tree.tree_remove(2)
+    my_tree.tree_remove(remove)
+    print("AFTER REMOVAL OF " + str(remove))
+    print(my_tree.__str__())
 
 
 if __name__ == "__main__":
